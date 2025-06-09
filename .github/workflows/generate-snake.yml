@@ -2,17 +2,17 @@ name: Generate Snake
 
 on:
   schedule:
-    - cron: "0 */12 * * *"  # 每 12 小時自動執行
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - uses: Platane/snk@v3
         with:
-          github_user_name: Yveself  # 用戶的 GitHub 帳號
+          github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
